@@ -1,28 +1,40 @@
-# My Project Template
+# ESP32 Randomized Soundboard
 
-This is a template for new projects.
+## HW used
 
-## Getting Started
+- ESP32 DevKitC
+- 5V Speaker
+- MAX98357A I2S mono amp
+- Button
 
-1.  Create a new repository from this template.
-2.  Clone your new repository.
-3.  Manually create the `dev` branch:
-    ```bash
-    git checkout -b dev
-    git push --set-upstream origin dev
-    git checkout master
-    ```
-4.  Follow the project-specific setup instructions below.
+### MAX98357A connection to ESP32
 
-## Branching Strategy
+MAX98357A ESP32
+              
+LRC		         D22
 
-GitFlow:
+BLCK	         D26
 
-- master: This branch always reflects a production-ready state. Only release-ready code is merged here.
-- dev: This is the primary development branch where all completed features are merged. It represents the latest delivered development changes for the next release.
-- feature/*: These branches are created from dev for working on new features. They are merged back into dev when the feature is complete.
-- release/*: When dev has enough features for a release (or a release date is approaching), a release branch is created from dev. This branch is used for final testing, bug fixes, and preparing release metadata. Once ready, it's merged into master (and tagged) and also back into dev (to incorporate any bug fixes made in the release branch).
-- hotfix/: These branches are created from master to quickly patch production issues. Once fixed, the hotfix is merged back into both master and dev (or the current release branch).
+DIN 	         D25
 
-## Further Setup
-(Add any further instructions here)
+GAIN	         not connected
+
+SD		         3.3V
+
+GND		         GND
+
+Vcc		         5V 
+
+
+## Load mp3 files
+
+1. Choose the correct "upload_port" and "monitor_baud" in platformio.ini
+2. Place .mp3 files in plataformIO's /data folder.
+3. Load all data files into esp32 ("PlatformIO: new terminal" in vscode):
+```
+pio run --target uploadfs
+```
+4. Compile and upload code into esp32
+```
+pio run --target upload
+```
