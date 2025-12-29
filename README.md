@@ -9,21 +9,16 @@
 
 ### MAX98357A connection to ESP32
 
-MAX98357A ESP32
-              
-LRC		         D22
+| MAX98357A | ESP32 |
+|--------------|-----------|
+| LRC          | D22       |
+| BCLK         | D26       |
+| DIN          | D25       |
+| GAIN         | Not connected |
+| SD           | 3.3V      |
+| GND          | GND       |
+| VCC          | 5V        |
 
-BLCK	         D26
-
-DIN 	         D25
-
-GAIN	         not connected
-
-SD		         3.3V
-
-GND		         GND
-
-Vcc		         5V 
 
 
 ## Load mp3 files
